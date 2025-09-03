@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 
 const app = express();
 
-// Route proxy STATIONS
+// Proxy STATIONS
 app.get("/stations", async (req, res) => {
   try {
     const target =
@@ -19,7 +19,7 @@ app.get("/stations", async (req, res) => {
   }
 });
 
-// Route proxy OBS (obs_elab reste inchangé)
+// Proxy OBS
 app.get("/obs", async (req, res) => {
   try {
     const target =
@@ -35,5 +35,6 @@ app.get("/obs", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 10000;
-app.listen(PORT, () => console.log("✅ Proxy lancé sur port " + PORT));
+// ✅ Utiliser le port fourni par Render
+const PORT = process.env.PORT;
+app.listen(PORT, () => console.log(`✅ Proxy Hubeau lancé sur port ${PORT}`));
